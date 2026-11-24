@@ -29,7 +29,7 @@ export function buscarPorId(id: string) {
 
 // Quita acentos, ¿ ¡ y mayúsculas: "orale" encuentra "¡Órale!"
 export function normalizar(texto: string) {
-  return texto.normalize('NFD').replace(/[̀-ͯ¿¡]/g, '').toLowerCase();
+  return texto.normalize('NFD').replace(/[\u0300-\u036f¿¡]/g, '').toLowerCase();
 }
 
 // Desordena una lista al azar
