@@ -53,6 +53,7 @@ cover_sub = ParagraphStyle('CoverSub', fontName='IndivisaBold', fontSize=21, lea
 
 # Anchos de columna según el número de columnas de cada tabla
 COLUMNAS = {2: [0.45, 0.55], 3: [0.36, 0.2, 0.44], 4: [0.2, 0.25, 0.28, 0.27]}
+COLUMNAS_POR_ENCABEZADO = {'Participante': [0.16, 0.5, 0.34]}
 
 
 def inline(text):
@@ -90,7 +91,8 @@ def markdown_table(lines):
     rows = [row for row in rows if not all(re.fullmatch(r':?-+:?', cell) for cell in row)]
     count = len(rows[0])
     screenshot = rows[0][0].startswith('![')
-    widths = [WIDTH / count] * count if screenshot else [WIDTH * share for share in COLUMNAS[count]]
+    shares = COLUMNAS_POR_ENCABEZADO.get(rows[0][0], COLUMNAS[count])
+    widths = [WIDTH / count] * count if screenshot else [WIDTH * share for share in shares]
     values = []
     for row_index, row in enumerate(rows):
         values_row = []

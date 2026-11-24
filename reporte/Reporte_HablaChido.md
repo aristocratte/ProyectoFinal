@@ -228,13 +228,21 @@ Estas pruebas no sustituyen al teléfono. En la web no se escucha la voz es-MX d
 
 ## 4.1. Pruebas con usuarios reales
 
-Tres personas ajenas al equipo probaron la app. Las tres dieron comentarios positivos. No registramos tareas, tiempos, errores ni comentarios textuales, así que no presentamos cifras.
+Tres personas ajenas al equipo probaron la app y comentaron su experiencia de forma oral. No registramos tareas, tiempos ni errores, así que no presentamos cifras. La tabla resume lo que dijo cada una.
+
+| Participante | Comentarios | Qué indica |
+| --- | --- | --- |
+| Persona 1 | Le gustó el diseño. La app le pareció muy simple de usar, clara y práctica, sin ninguna complejidad. | La decisión de simplificar se nota desde fuera |
+| Persona 2 | Lo que más le gustó fue poder escuchar las palabras. La traducción le pareció precisa. | El audio y las traducciones FR/EN aportan valor real |
+| Persona 3 | Opinión general parecida. Le habría gustado algo más gamificado y ve margen para mejorar la app. | Los puntos y niveles se quedan cortos como juego |
+
+Las tres coincidieron en que la app es simple y clara.
 
 ### Qué dicen estas pruebas y qué no
 
-Un comentario positivo indica que la primera impresión fue buena: la app se entiende lo suficiente para que alguien de fuera la use y le guste. No dice si cada persona logró buscar una palabra, usar el filtro o terminar el quiz sin ayuda, ni cuánto tardó. Con tres personas y sin registro tampoco podemos separar la opinión sobre la idea de la opinión sobre la interfaz.
+Los comentarios confirman dos decisiones del proyecto. La interfaz sencilla funcionó: nadie la describió como complicada. Y el audio, que en el código son dos líneas, fue lo más valorado por una de las personas. La tercera opinión coincide con nuestra propia crítica de la gamificación: sumar puntos no basta para que se sienta como un juego. Las insignias, los retos diarios o el repaso espaciado de la sección 5 responden a esa petición.
 
-Hay otro sesgo. Cuando quien prueba conoce a quien desarrolló, suele ser amable con sus comentarios, y eso empuja los resultados hacia lo positivo. La consecuencia es que no podemos afirmar que la usabilidad esté validada. Las dudas importantes siguen abiertas: si el filtro por registro se entiende sin explicación, si la voz suena bien en otros teléfonos y si los puntos motivan a volver.
+Estos resultados tienen límites. Una opinión general no dice si cada persona logró buscar una palabra, usar el filtro o terminar el quiz sin ayuda, ni cuánto tardó. Nadie mencionó el filtro por registro, que es la función central de la propuesta, así que no sabemos si se entendió. Además, quien prueba la app de un conocido suele ser amable, y eso empuja los comentarios hacia lo positivo. Con tres personas y sin registro, la conclusión honesta es que la primera impresión es buena, pero la usabilidad todavía no está medida.
 
 ### Cómo repetiríamos la prueba
 
@@ -248,7 +256,7 @@ Siguiendo ISO 9241-11 y a Nielsen (2000), haríamos una segunda ronda con cinco 
 | Guardar una palabra y encontrarla después | Si el corazón y la pestaña Favoritos son claros |
 | Terminar una ronda del quiz | Si la corrección y los puntos se entienden |
 
-Para nosotros fue la lección más útil del proyecto en esta parte: una prueba sin registro deja una buena sensación, pero casi nada que se pueda analizar.
+La lección para nosotros: escuchar opiniones sirve para saber qué gusta, pero sin anotar lo que pasa durante la prueba es difícil saber qué falla.
 
 ### Factores positivos y negativos
 
@@ -277,7 +285,7 @@ El contenido es la otra limitación real. Las 54 expresiones las escribimos noso
 
 ### Limitaciones del prototipo
 
-El diccionario tiene 54 expresiones escritas por el equipo, sin revisión de un especialista. La pronunciación depende de la voz de cada teléfono. No hay cuentas ni respaldo, así que los datos se pierden al desinstalar. Los puntos premian la repetición. Las pruebas con usuarios fueron informales. No revisamos la app con un lector de pantalla ni hay pruebas automáticas. La interfaz solo está en español, aunque los usuarios principales son extranjeros.
+El diccionario tiene 54 expresiones escritas por el equipo, sin revisión de un especialista. La pronunciación depende de la voz de cada teléfono. No hay cuentas ni respaldo, así que los datos se pierden al desinstalar. Los puntos premian la repetición. Las pruebas con usuarios recogieron opiniones, pero no midieron tareas ni tiempos. No revisamos la app con un lector de pantalla ni hay pruebas automáticas. La interfaz solo está en español, aunque los usuarios principales son extranjeros.
 
 ### Pronunciación asistida
 
@@ -299,6 +307,7 @@ El campo `categoria` ya está en los datos, así que explorar por tema (comida, 
 | --- | --- | --- | --- |
 | Pronunciación asistida | Development build, permisos de micrófono | Alto | Privacidad del audio |
 | Repaso espaciado | Caja por palabra en AsyncStorage | Bajo | Ninguno relevante |
+| Insignias y retos diarios | Lista de logros en AsyncStorage | Bajo | Premiar la repetición y no el aprendizaje |
 | Palabra del día con aviso | Notificaciones locales (Expo, s. f.-e) | Bajo | Avisos que molesten |
 | Revisión de contenido | Hablantes nativos o lingüistas | Medio | Registro mal clasificado |
 | Accesibilidad | Etiquetas, tamaño de texto, contraste | Medio | Excluir a quien usa lector de pantalla |
