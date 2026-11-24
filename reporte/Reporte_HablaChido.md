@@ -43,21 +43,21 @@ La propuesta fijó lo mínimo que debía hacer el prototipo: unas 50 expresiones
 
 ### React Native y Expo
 
-React Native permite escribir la interfaz de una app con componentes de JavaScript o TypeScript. Cada componente, como `View`, `Text` o `Pressable`, se convierte en un elemento nativo de Android o de iOS (React Native, s. f.-b). Expo agrega herramientas y módulos listos para usar. Con Expo Go el proyecto se abre en un teléfono escaneando un código QR, sin compilar nada.
+React Native permite escribir la interfaz de una app con componentes de JavaScript o TypeScript. Cada componente, como `View`, `Text` o `Pressable`, se convierte en un elemento nativo de Android o de iOS. Expo agrega herramientas y módulos listos para usar. Con Expo Go el proyecto se abre en un teléfono escaneando un código QR, sin compilar nada.
 
-Expo Go tiene un límite: solo incluye los módulos nativos que trae de fábrica. Una librería con código nativo propio exige un *development build*, es decir, compilar una versión propia de la app (Expo, s. f.-b). Esa diferencia pesó en varias decisiones del proyecto, como se explica en la sección 5.
+Expo Go tiene un límite: solo incluye los módulos nativos que trae de fábrica. Una librería con código nativo propio exige un *development build*, es decir, compilar una versión propia de la app. Esa diferencia pesó en varias decisiones del proyecto, como se explica en la sección 5.
 
 ### Componentes y estado
 
-Un componente es una función que devuelve lo que se ve en pantalla. El estado es la información que cambia mientras se usa la app: el texto buscado, la pregunta actual del quiz o la opción elegida. `useState` guarda un valor y da una función para cambiarlo. Cuando se llama a esa función, React vuelve a dibujar el componente con el valor nuevo (React, s. f.-b). Para la lista de palabras usamos `FlatList`, que solo dibuja las filas visibles (React Native, s. f.-a).
+Un componente es una función que devuelve lo que se ve en pantalla. El estado es la información que cambia mientras se usa la app: el texto buscado, la pregunta actual del quiz o la opción elegida. `useState` guarda un valor y da una función para cambiarlo. Cuando se llama a esa función, React vuelve a dibujar el componente con el valor nuevo (React, s. f.). Para la lista de palabras usamos `FlatList`, que solo dibuja las filas visibles.
 
 ### Navegación con Expo Router
 
-Expo Router crea las rutas a partir de los archivos de la carpeta `app` (Expo, s. f.-c). Un archivo `_layout.tsx` define cómo se agrupan las pantallas. En HablaChido, `(tabs)/_layout.tsx` crea la barra inferior con Palabras, Favoritos y Quiz (Expo, s. f.-d). El archivo `palabra/[id].tsx` es una ruta dinámica: el `[id]` del nombre recibe el identificador de la palabra que se abre.
+Expo Router crea las rutas a partir de los archivos de la carpeta `app` (Expo, s. f.-b). Un archivo `_layout.tsx` define cómo se agrupan las pantallas. En HablaChido, `(tabs)/_layout.tsx` crea la barra inferior con Palabras, Favoritos y Quiz. El archivo `palabra/[id].tsx` es una ruta dinámica: el `[id]` del nombre recibe el identificador de la palabra que se abre.
 
 ### Estado compartido con Context
 
-Algunos datos los usan varias pantallas. Un favorito se marca en la ficha y se muestra en otra pestaña. Pasarlo de componente en componente sería pesado, así que usamos un Context de React. `createContext` crea el canal, un componente `Provider` pone los valores en él y cualquier pantalla los lee con `useContext` (React, s. f.-a).
+Algunos datos los usan varias pantallas. Un favorito se marca en la ficha y se muestra en otra pestaña. Pasarlo de componente en componente sería pesado, así que usamos un Context de React. `createContext` crea el canal, un componente `Provider` pone los valores en él y cualquier pantalla los lee con `useContext`.
 
 ### Persistencia local
 
@@ -65,11 +65,11 @@ Las palabras viven en `data/palabras.json`, que se empaqueta con la app. Lo que 
 
 ### Búsqueda sin acentos
 
-Un extranjero escribe "orale", no "¡Órale!". El método `normalize('NFD')` separa cada letra de su acento, de modo que "Ó" queda como una "O" seguida de un acento suelto (Mozilla, s. f.). Después, una expresión regular borra esos acentos y los signos ¿ y ¡. Con el texto en minúsculas, la búsqueda compara letras simples.
+Un extranjero escribe "orale", no "¡Órale!". El método `normalize('NFD')` separa cada letra de su acento, de modo que "Ó" queda como una "O" seguida de un acento suelto. Después, una expresión regular borra esos acentos y los signos ¿ y ¡. Con el texto en minúsculas, la búsqueda compara letras simples.
 
 ### Síntesis de voz
 
-`expo-speech` usa el motor de texto a voz del sistema operativo (Expo, s. f.-f). Le pedimos el idioma `es-MX`. No necesita internet ni archivos de audio, pero el resultado depende de las voces instaladas en cada teléfono.
+`expo-speech` usa el motor de texto a voz del sistema operativo (Expo, s. f.-c). Le pedimos el idioma `es-MX`. No necesita internet ni archivos de audio, pero el resultado depende de las voces instaladas en cada teléfono.
 
 ### Gamificación
 
@@ -81,7 +81,7 @@ El registro es el grado de formalidad que pide una situación. La misma idea se 
 
 ### Pruebas con usuarios
 
-La norma ISO 9241-11 define la usabilidad con tres medidas: si la persona logra su objetivo, cuánto esfuerzo le cuesta y qué tan satisfecha queda (International Organization for Standardization [ISO], 2018). Nielsen (2000) muestra que unas cinco personas bastan para descubrir la mayoría de los problemas de una interfaz, siempre que se vuelva a probar después de corregir.
+Una prueba de usabilidad observa si la persona logra su objetivo, cuánto esfuerzo le cuesta y qué tan satisfecha queda. Nielsen (2000) muestra que unas cinco personas bastan para descubrir la mayoría de los problemas de una interfaz, siempre que se vuelva a probar después de corregir.
 
 ---
 
@@ -246,7 +246,7 @@ Estos resultados tienen límites. Una opinión general no dice si cada persona l
 
 ### Cómo repetiríamos la prueba
 
-Siguiendo ISO 9241-11 y a Nielsen (2000), haríamos una segunda ronda con cinco personas ajenas al equipo y al grupo, cada una con el teléfono y sin explicación previa. Por cada tarea anotaríamos si la logró, cuánto tardó y si pidió ayuda. Al final, una calificación de 1 a 5 y una pregunta abierta: "¿Qué cambiarías?".
+Siguiendo a Nielsen (2000), haríamos una segunda ronda con cinco personas ajenas al equipo y al grupo, cada una con el teléfono y sin explicación previa. Por cada tarea anotaríamos si la logró, cuánto tardó y si pidió ayuda. Al final, una calificación de 1 a 5 y una pregunta abierta: "¿Qué cambiarías?".
 
 | Tarea | Qué mide |
 | --- | --- |
@@ -289,13 +289,13 @@ El diccionario tiene 54 expresiones escritas por el equipo, sin revisión de un 
 
 ### Pronunciación asistida
 
-La propuesta mencionaba grabar la propia voz y compararla con el modelo. La opción gratuita más directa es `expo-speech-recognition`, que usa el reconocimiento de voz de iOS y de Android y acepta español de México (jamsch, s. f.). El flujo sería simple: la persona toca el micrófono, dice la palabra y la app compara el texto reconocido con la expresión, normalizado igual que en la búsqueda. La alternativa sin conexión es `whisper.rn`, que ejecuta el modelo Whisper en el teléfono (mybigday, s. f.).
+La propuesta mencionaba grabar la propia voz y compararla con el modelo. La opción gratuita más directa es `expo-speech-recognition`, que usa el reconocimiento de voz de iOS y de Android y acepta español de México. El flujo sería simple: la persona toca el micrófono, dice la palabra y la app compara el texto reconocido con la expresión, normalizado igual que en la búsqueda. La alternativa sin conexión es `whisper.rn`, que ejecuta el modelo Whisper en el teléfono.
 
-Las dos exigen dejar Expo Go y compilar un *development build* (Expo, s. f.-b). Por eso no entraron en el prototipo: la demostración depende de Expo Go. Hay tres problemas más. El reconocimiento de Apple y de Google puede enviar el audio a sus servidores, lo que contradice la promesa de no usar servicios externos, salvo que se active el modo en el dispositivo. Whisper agrega unos 75 MB de modelo y consume batería. Además, un reconocedor general puede no conocer palabras como "güey" y devolver "wey", así que cada entrada del JSON necesitaría variantes aceptadas.
+Las dos exigen dejar Expo Go y compilar un *development build*. Por eso no entraron en el prototipo: la demostración depende de Expo Go. Hay tres problemas más. El reconocimiento de Apple y de Google puede enviar el audio a sus servidores, lo que contradice la promesa de no usar servicios externos, salvo que se active el modo en el dispositivo. Whisper agrega unos 75 MB de modelo y consume batería. Además, un reconocedor general puede no conocer palabras como "güey" y devolver "wey", así que cada entrada del JSON necesitaría variantes aceptadas.
 
 ### Repaso espaciado
 
-El sistema de cajas de Leitner (1972) guarda cada palabra en una caja según cuántas veces se acertó. Si se falla, vuelve a la primera. El quiz elegiría más palabras de las primeras cajas. Bastaría con guardar en AsyncStorage un número de caja por palabra, y los puntos empezarían a reflejar lo aprendido y no solo lo jugado.
+Un sistema de cajas guarda cada palabra en una caja según cuántas veces se acertó. Si se falla, vuelve a la primera. El quiz elegiría más palabras de las primeras cajas. Bastaría con guardar en AsyncStorage un número de caja por palabra, y los puntos empezarían a reflejar lo aprendido y no solo lo jugado.
 
 ### Contenido y comunidad
 
@@ -308,7 +308,7 @@ El campo `categoria` ya está en los datos, así que explorar por tema (comida, 
 | Pronunciación asistida | Development build, permisos de micrófono | Alto | Privacidad del audio |
 | Repaso espaciado | Caja por palabra en AsyncStorage | Bajo | Ninguno relevante |
 | Insignias y retos diarios | Lista de logros en AsyncStorage | Bajo | Premiar la repetición y no el aprendizaje |
-| Palabra del día con aviso | Notificaciones locales (Expo, s. f.-e) | Bajo | Avisos que molesten |
+| Palabra del día con aviso | Notificaciones locales | Bajo | Avisos que molesten |
 | Revisión de contenido | Hablantes nativos o lingüistas | Medio | Registro mal clasificado |
 | Accesibilidad | Etiquetas, tamaño de texto, contraste | Medio | Excluir a quien usa lector de pantalla |
 | Pruebas automáticas | Jest para normalizar, nivel y racha | Bajo | Ninguno relevante |
@@ -322,7 +322,7 @@ Empezaríamos por el repaso espaciado y las pruebas automáticas: cuestan poco y
 
 ### Conclusión del equipo
 
-HablaChido nació de un problema que conocemos bien y terminó como una app pequeña que hace lo que prometía. Aprendimos que recortar también es diseñar: quitar funciones dejó un código que los tres podemos explicar. La gamificación motiva, pero hay que vigilar qué mide. Y una app que habla de lenguaje vulgar tiene que tratarlo con cuidado, porque etiquetar mal una palabra afecta a personas reales. El código de ética de la ACM pide justamente evitar el daño y ser honestos sobre las limitaciones de lo que se construye (Association for Computing Machinery [ACM], 2018).
+HablaChido nació de un problema que conocemos bien y terminó como una app pequeña que hace lo que prometía. Aprendimos que recortar también es diseñar: quitar funciones dejó un código que los tres podemos explicar. La gamificación motiva, pero hay que vigilar qué mide. Y una app que habla de lenguaje vulgar tiene que tratarlo con cuidado, porque etiquetar mal una palabra afecta a personas reales.
 
 ### Aristide Cordonnier
 
@@ -352,44 +352,18 @@ En la demostración seguimos el recorrido de las figuras: buscar "orale" sin ace
 
 ## 9. Referencias
 
-Association for Computing Machinery. (2018). *ACM code of ethics and professional conduct*. https://www.acm.org/code-of-ethics
-
 Deterding, S., Dixon, D., Khaled, R., y Nacke, L. (2011). From game design elements to gamefulness: Defining "gamification". En *Proceedings of the 15th International Academic MindTrek Conference: Envisioning Future Media Environments* (pp. 9-15). ACM. https://doi.org/10.1145/2181037.2181040
 
 Expo. (s. f.-a). *@react-native-async-storage/async-storage*. https://docs.expo.dev/versions/latest/sdk/async-storage/
 
-Expo. (s. f.-b). *Introduction to development builds*. https://docs.expo.dev/develop/development-builds/introduction/
+Expo. (s. f.-b). *Introduction to Expo Router*. https://docs.expo.dev/router/introduction/
 
-Expo. (s. f.-c). *Introduction to Expo Router*. https://docs.expo.dev/router/introduction/
-
-Expo. (s. f.-d). *JavaScript tabs*. https://docs.expo.dev/router/advanced/tabs/
-
-Expo. (s. f.-e). *Notifications*. https://docs.expo.dev/versions/latest/sdk/notifications/
-
-Expo. (s. f.-f). *Speech*. https://docs.expo.dev/versions/latest/sdk/speech/
-
-International Organization for Standardization. (2018). *Ergonomics of human-system interaction, Part 11: Usability: Definitions and concepts* (ISO 9241-11:2018). https://www.iso.org/standard/63500.html
-
-jamsch. (s. f.). *expo-speech-recognition* [Código fuente]. GitHub. https://github.com/jamsch/expo-speech-recognition
-
-Leitner, S. (1972). *So lernt man lernen*. Herder.
-
-mybigday. (s. f.). *whisper.rn* [Código fuente]. GitHub. https://github.com/mybigday/whisper.rn
-
-Mozilla. (s. f.). *String.prototype.normalize()*. MDN Web Docs. https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String/normalize
+Expo. (s. f.-c). *Speech*. https://docs.expo.dev/versions/latest/sdk/speech/
 
 Nielsen, J. (2000, 18 de marzo). *Why you only need to test with 5 users*. Nielsen Norman Group. https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/
 
-React. (s. f.-a). *createContext*. https://react.dev/reference/react/createContext
-
-React. (s. f.-b). *useState*. https://react.dev/reference/react/useState
-
-React Native. (s. f.-a). *FlatList*. https://reactnative.dev/docs/flatlist
-
-React Native. (s. f.-b). *React fundamentals*. https://reactnative.dev/docs/intro-react
-
-Universidad La Salle México. (s. f.). *Imagen institucional*. https://imagen.lasalle.mx/
+React. (s. f.). *useState*. https://react.dev/reference/react/useState
 
 Wiener, N. (1961). *Cybernetics: Or control and communication in the animal and the machine* (2.ª ed.). MIT Press.
 
-Fuentes consultadas el 23 de noviembre de 2026. El logo de La Salle México y la tipografía Indivisa proceden de sus recursos institucionales. Las capturas se tomaron de la app durante las pruebas descritas.
+Fuentes consultadas el 23 de noviembre de 2026.
